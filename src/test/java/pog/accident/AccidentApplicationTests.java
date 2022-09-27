@@ -28,6 +28,8 @@ class AccidentApplicationTests {
 	void repositoryTest() {
 
 		Accident accident = new Accident();
+
 		Accident savedAccident = accidentRepository.save(accident);
+
 	}
 }
