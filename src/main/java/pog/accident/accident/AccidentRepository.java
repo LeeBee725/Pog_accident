@@ -1,4 +1,4 @@
-package pog.accident.accidents;
+package pog.accident.accident;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
