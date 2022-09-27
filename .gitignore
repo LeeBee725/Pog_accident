@@ -30,6 +30,7 @@
 # Gradle
 .idea/**/gradle.xml
 .idea/**/libraries
+.idea/*.*
 *.yml
 
 # Gradle and Maven with auto-import

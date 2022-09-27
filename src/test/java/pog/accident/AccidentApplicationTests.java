@@ -28,10 +28,6 @@ class AccidentApplicationTests {
 	void repositoryTest() {
 
 		Accident accident = new Accident();
-		Accident savedAccident = accidentRepository.save(accident); // 1차 캐시에 저장이 된 상태 Yes or No
-
-		accidentRepository.flush();
-
-
+		Accident savedAccident = accidentRepository.save(accident);
 	}
 }
