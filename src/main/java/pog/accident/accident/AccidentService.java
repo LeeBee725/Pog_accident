@@ -16,8 +16,7 @@ public class AccidentService {
         ModelMapper modelMapper = new ModelMapper();
         Optional<Accident> findAccident = accidentRepository.findById(accidentId);
         if (findAccident.isPresent()) {
-            AccidentDTO accidentDTO = modelMapper.map(findAccident.get(), AccidentDTO.class);
-            return accidentDTO;
+            return modelMapper.map(findAccident.get(), AccidentDTO.class);
         }
         throw new Exception("AccidentService.getAccident: Accident is null");
     }
