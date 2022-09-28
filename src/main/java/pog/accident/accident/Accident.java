@@ -27,5 +27,9 @@ public class Accident {
     @UpdateTimestamp
     private LocalDateTime updatedTime;
 
+    public void changeUser(User user) {
+        user.getAccidents().add(this);
+        this.user = user;
+    }
 
 }
