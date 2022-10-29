@@ -48,9 +48,7 @@ public class AdminController {
      */
     @DeleteMapping("/users/{userId}")
     public String deleteUser(@PathVariable Long userId) {
-        Optional<User> findUser = userRepository.findById(userId);
-        User user = findUser.get();
-        userRepository.delete(user);
+        userRepository.deleteById(userId);
         return "redirect:users";
     }
 
