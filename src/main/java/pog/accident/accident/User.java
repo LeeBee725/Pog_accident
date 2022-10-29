@@ -20,4 +20,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Accident> accidents = new ArrayList<>();
+
+    private String name;
+    private Integer age;
 }
