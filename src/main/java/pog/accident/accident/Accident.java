@@ -26,6 +26,4 @@ public class Accident {
     private LocalDateTime createdTime;
     @UpdateTimestamp
     private LocalDateTime updatedTime;
-
-
 }
