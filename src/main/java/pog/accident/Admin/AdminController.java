@@ -41,8 +41,16 @@ public class AdminController {
         return "redirect:users";
     }
 
+    /**
+     * DB에서 유저를 완전히 삭제한다.
+     * @param userId
+     * @return
+     */
     @DeleteMapping("/users/{userId}")
     public String deleteUser(@PathVariable Long userId) {
+        Optional<User> findUser = userRepository.findById(userId);
+        User user = findUser.get();
+        userRepository.delete(user);
         return "redirect:users";
     }
 
