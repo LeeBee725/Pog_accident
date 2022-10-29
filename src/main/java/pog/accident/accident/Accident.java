@@ -31,5 +31,4 @@ public class Accident {
         user.getAccidents().add(this);
         this.user = user;
     }
-
 }
