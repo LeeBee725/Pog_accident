@@ -26,19 +26,38 @@ public class AdminController {
 
     @GetMapping("/users")
     public String users(Model model) {
-         constructTestUser();
+        if (userRepository.count() == 0L)
+            constructTestUser();
         List<User> users = userRepository.findAll();
 
         model.addAttribute("users", users);
         return "users";
     }
 
-    @PatchMapping("/users/{userId}")
+    @GetMapping("/users/{userId}")
+    public String updateUserForm(@PathVariable Long userId, Model model) {
+        User user = userRepository.findById(userId).get();
+        model.addAttribute("user", user);
+        return "update";
+    }
+
+//    @PatchMapping("/users/{userId}")
+//    public String updateUser(@PathVariable Long userId, @RequestBody User user) {
+//        Optional<User> userOrNull = userRepository.findById(userId);
+//        if (userOrNull.isPresent()) {
+//            User userToUpdate = userOrNull.get();
+//            userToUpdate.setName(user.getName());
+//            userToUpdate.setAge(user.getAge());
+//        }
+//        return "redirect:";
+//    }
+    @PostMapping("/users/{userId}")
     public String updateUser(@PathVariable Long userId, @ModelAttribute User user) {
-        User findUser = userRepository.findById(userId).get();
-        findUser.setName(user.getName());
-        findUser.setAge(user.getAge());
-        return "redirect:users";
+        User userToUpdate = userRepository.findById(userId).get();
+        userToUpdate.setName(user.getName());
+        userToUpdate.setAge(user.getAge());
+        userRepository.flush();
+        return "redirect:/admin/users";
     }
 
     /**
