@@ -2,6 +2,11 @@ package pog.accident.accident;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
-public interface AccidentRepository extends JpaRepository<Accident, Long> {
+import java.util.List;
+
+public interface AccidentRepository extends JpaRepository<Accident, Long>, AccidentRepositoryInterface {
+
+    List<Accident> getAccidentsByUserId(Long userId);
 }
