@@ -41,16 +41,6 @@ public class AdminController {
         return "update";
     }
 
-//    @PatchMapping("/users/{userId}")
-//    public String updateUser(@PathVariable Long userId, @RequestBody User user) {
-//        Optional<User> userOrNull = userRepository.findById(userId);
-//        if (userOrNull.isPresent()) {
-//            User userToUpdate = userOrNull.get();
-//            userToUpdate.setName(user.getName());
-//            userToUpdate.setAge(user.getAge());
-//        }
-//        return "redirect:";
-//    }
     @PostMapping("/users/{userId}")
     public String updateUser(@PathVariable Long userId, @ModelAttribute User user) {
         User userToUpdate = userRepository.findById(userId).get();
@@ -68,7 +58,7 @@ public class AdminController {
     @DeleteMapping("/users/{userId}")
     public String deleteUser(@PathVariable Long userId) {
         userRepository.deleteById(userId);
-        return "redirect:users";
+        return "redirect:/admin/users";
     }
 
     private void constructTestUser() {
